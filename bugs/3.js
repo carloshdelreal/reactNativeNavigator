@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack';
 
 const styles = StyleSheet.create({
   screen: {
@@ -68,4 +69,4 @@ const AppNavigator = createStackNavigator({
   ContactScreen,
 });
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);
