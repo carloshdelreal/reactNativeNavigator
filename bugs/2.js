@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack';
 
 const styles = StyleSheet.create({
   screen: {
@@ -34,7 +35,7 @@ const ContactScreen = ({ navigation }) => (
     <Button
       title="Go to Lucy's Contact screen"
       onPress={() => {
-        navigation.navigate('ContactScreen', { name: 'Lucy' });
+        navigation.navigate('HomeScreen', { name: 'Lucy' });
       }}
     />
   </View>
@@ -42,7 +43,7 @@ const ContactScreen = ({ navigation }) => (
 
 const AppNavigator = createStackNavigator({
   HomeScreen,
-  ContactScreen,
+  ContactScreen
 });
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);
