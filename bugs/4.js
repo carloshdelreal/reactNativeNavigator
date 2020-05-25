@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Button, Text, View } from 'react-native';
-import { createTabNavigator, createStackNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
 const styles = StyleSheet.create({
   screen: {
@@ -45,16 +47,13 @@ const FriendsScreen = ({ navigation }) => (
 /////
 // Do not edit anything above this line
 /////
-
-const ContactNavigator = createTabNavigator({
-  InfoScreen,
-  FriendsScreen,
-});
+const Tab = createMaterialTopTabNavigator();
 
 const ContactScreen = () => (
-  <View style={styles.screen}>
-    <ContactNavigator />
-  </View>
+      <Tab.Navigator>
+        <Tab.Screen name="Info" component={InfoScreen} />
+        <Tab.Screen name="Friends" component={FriendsScreen} />
+      </Tab.Navigator>
 );
 
 const AppNavigator = createStackNavigator({
@@ -62,4 +61,4 @@ const AppNavigator = createStackNavigator({
   ContactScreen,
 });
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);
